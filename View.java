@@ -18,6 +18,13 @@ public class View{
 	public void startGUI(){
 		panel.add(welcome);
 		frame.add(panel);
+		frame.setSize(400,400);
+        frame.setLayout(new GridLayout(3, 1));
+        frame.addWindowListener(new WindowAdapter() {
+        	public void windowClosing(WindowEvent windowEvent){
+            	System.exit(0);
+         	}        
+        });    
 		frame.setVisible(true);
 	}
 	
