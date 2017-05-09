@@ -1,20 +1,13 @@
+import java.awt.Graphics;
 
-public abstract class Organism{
+public interface Organism{
 	
-	protected Vector2d position;
-	protected Vector2d velocity;
-	protected Vector2d acceleration;
+	public void update();
 	
-	public abstract void update();
+	public void draw(Graphics g);
 	
-	public abstract void draw();
+	public void die();
 	
-	public void addToArena(){
-		
-	}
-	
-	public void removeFromArena(){
-		
-	}
+	public boolean isDead();
 	
 }
