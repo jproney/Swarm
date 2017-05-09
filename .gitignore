@@ -50,3 +50,7 @@ Swarm.jcu
 *.jcw
 *.class
 *.txt
+
+.classpath
+
+.project
