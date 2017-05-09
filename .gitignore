@@ -48,3 +48,5 @@ Temporary Items
 *.jcp
 Swarm.jcu
 *.jcw
+*.class
+*.txt
