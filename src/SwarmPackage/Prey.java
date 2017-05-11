@@ -41,10 +41,21 @@ public class Prey implements Sprite{
 				p2.scale(-1);
 				p1.add(p2);
 				if(p1.getMagnitude() <= 10){
-					p1.scale(.01);
+					p1.normalize(.01);
 					repuls.add(p1);
 				}
 				numPrey++;
+			}
+			else if(o instanceof Obstacle){
+				Vector2d p1 = position.copy();
+				Vector2d p2 = o.getPosition().copy();
+				p2.scale(-1);
+				p1.add(p2);
+				if(p1.getMagnitude() <= 50){
+					p1.normalize(.01);
+					Vector2d orth = p1.ortho();
+					repuls.add(orth);
+				}
 			}
 		}
 		

@@ -56,5 +56,19 @@ public class Vector2d{
 	public Vector2d copy(){
 		return new Vector2d(xComp, yComp);
 	}
+	
+	public double dot(Vector2d other){
+		return xComp*other.getX() + yComp*other.getY();
+	}
+	
+	public Vector2d project(Vector2d other){
+		Vector2d projection = other.copy();
+		projection.scale(other.dot(this)/other.dot(other));
+		return projection;
+	}
+	
+	public Vector2d ortho(){
+		return new Vector2d(yComp, -xComp);
+	}
 		
 }
