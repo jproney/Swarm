@@ -46,4 +46,15 @@ public class Vector2d{
 		normalize(1.0);
 	}
 	
+	public void capMag(double max){
+		if(getMagnitude() > max){
+			scale(Math.sqrt(max/getMagnitude()));
+		}
+	}
+
+	
+	public Vector2d copy(){
+		return new Vector2d(xComp, yComp);
+	}
+		
 }
