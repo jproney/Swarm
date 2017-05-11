@@ -11,13 +11,13 @@ public class Arena extends JPanel implements Runnable{
 	
 	
 	private static long GAME_TICK = 20 * 1000; //20000 nanoseconds = 20 ms
-	private ArrayList<Organism> orgList;
+	private ArrayList<Sprite> orgList;
 	
 	public Arena(){
-		orgList = new ArrayList<Organism>();
+		orgList = new ArrayList<Sprite>();
 	}
 	
-	public void addOrganism(Organism o){
+	public void addOrganism(Sprite o){
 		orgList.add(o);
 	}
 	

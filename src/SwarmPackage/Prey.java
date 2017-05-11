@@ -3,8 +3,11 @@ package SwarmPackage;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
-public class Prey implements Organism{
+public class Prey implements Sprite{
 
+	
+	private static int ARENA_WIDTH = 600;
+	private static int ARENA_HEIGHT = 600;
 	private static double ATTRACTION = .00001;
 	private static double VEL_MATCHING = .001;
 	
@@ -23,12 +26,12 @@ public class Prey implements Organism{
 	}
 	
 	@Override
-	public void update(ArrayList<Organism> orgs) {
+	public void update(ArrayList<Sprite> orgs) {
 		Vector2d com = new Vector2d(0,0);
 		Vector2d avgVel = new Vector2d(0,0);
 		Vector2d repuls = new Vector2d(0,0);
 		int numPrey = 0;
-		for(Organism o : orgs){
+		for(Sprite o : orgs){
 			if(o instanceof Prey && !o.equals(this)){
 				com.add(o.getPosition());
 				avgVel.add(o.getVelocity());
@@ -60,11 +63,17 @@ public class Prey implements Organism{
 			velocity.add(repuls);
 		}
 
-		if(position.getX() >= 590 || position.getX() <= 0){
-			velocity.scale(-1,1);
+		if((ARENA_WIDTH - position.getX()) < 150){
+			velocity.add(new Vector2d(-.001,0));
 		}
-		if(position.getY() >= 590 || position.getY() <= 0){
-			velocity.scale(1,-1);
+		if((position.getX()) < 150){
+			velocity.add(new Vector2d(.001, 0));
+		}
+		if((ARENA_HEIGHT - position.getY()) < 150){
+			velocity.add(new Vector2d(0, -.001));
+		}
+		if((position.getY()) < 150){
+			velocity.add(new Vector2d(0, .001));
 		}
 		
 		velocity.capMag(velMag);

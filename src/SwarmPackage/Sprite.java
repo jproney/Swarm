@@ -3,9 +3,9 @@ package SwarmPackage;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
-public interface Organism{
+public interface Sprite{
 	
-	public void update(ArrayList<Organism> orgs);
+	public void update(ArrayList<Sprite> orgs);
 	
 	public void draw(Graphics g);
 	
