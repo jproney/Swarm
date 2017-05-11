@@ -1,3 +1,5 @@
+package SwarmPackage;
+
 import java.awt.Graphics;
 
 public interface Organism{

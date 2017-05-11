@@ -1,3 +1,5 @@
+package SwarmPackage;
+
 
 public class Vector2d{
 	
@@ -21,20 +23,27 @@ public class Vector2d{
 		return Math.sqrt(Math.pow(xComp,2) + Math.pow(yComp,2));
 	}
 	
-	public Vector2d add(Vector2d vec){
-		return new Vector2d(xComp + vec.getX(), yComp + vec.getY());
+	public void add(Vector2d vec){
+		xComp += vec.getX();
+		yComp += vec.getY();
 	}
 	
-	public Vector2d scale(double scale){
-		return new Vector2d(xComp*scale, yComp*scale);
+	public void scale(double x, double y){
+		xComp *= x;
+		yComp *= y;
+	}
+
+	
+	public void scale(double scale){
+		scale(scale, scale);
+	}
+		
+	public void normalize(double len){
+		scale(len/getMagnitude());
 	}
 	
-	public Vector2d normalize(double len){
-		return scale(len/getMagnitude());
-	}
-	
-	public Vector2d normalize(){
-		return normalize(1.0);
+	public void normalize(){
+		normalize(1.0);
 	}
 	
 }
