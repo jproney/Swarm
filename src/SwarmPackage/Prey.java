@@ -14,6 +14,7 @@ public class Prey implements Sprite{
 	
 	private Vector2d position;
 	private Vector2d velocity;
+	private boolean dead = false;
 	private double velMag;
 	
 	public Prey(Vector2d pos){
@@ -47,12 +48,15 @@ public class Prey implements Sprite{
 				}
 				numPrey++;
 			}
-			else if(o instanceof Obstacle){
+			else if(o instanceof Obstacle || o instanceof Predator){
 				Vector2d p1 = position.copy();
 				Vector2d p2 = o.getPosition().copy();
 				p2.scale(-1);
 				p1.add(p2);
-				if(p1.getMagnitude() <= 50){
+				if(p1.getMagnitude() <= 15 && o instanceof Predator){
+					this.die();
+				}
+				else if(p1.getMagnitude() <= 50){
 					p1.normalize(.01);
 					Vector2d orth = p1.ortho();
 					repuls.add(orth);
@@ -118,14 +122,14 @@ public class Prey implements Sprite{
 
 	@Override
 	public void die() {
-		// TODO Auto-generated method stub
+		dead = true;
 		
 	}
 
 	@Override
 	public boolean isDead() {
 		// TODO Auto-generated method stub
-		return false;
+		return dead;
 	}
 	
 }

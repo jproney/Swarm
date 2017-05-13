@@ -105,13 +105,13 @@ public class Predator implements Sprite{
 	@Override
 	public Vector2d getPosition() {
 		// TODO Auto-generated method stub
-		return null;
+		return position;
 	}
 
 	@Override
 	public Vector2d getVelocity() {
 		// TODO Auto-generated method stub
-		return null;
+		return velocity;
 	}
 	
 	
