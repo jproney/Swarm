@@ -1,5 +1,6 @@
 package SwarmPackage;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -20,6 +21,7 @@ public class Obstacle implements Sprite{
 
 	@Override
 	public void draw(Graphics g) {
+		g.setColor(Color.BLACK);
 		g.fillArc((int)position.getX(), (int)position.getY(), 10, 10, 0, 360);
 		
 	}

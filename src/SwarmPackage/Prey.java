@@ -1,5 +1,6 @@
 package SwarmPackage;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -103,7 +104,16 @@ public class Prey implements Sprite{
 
 	@Override
 	public void draw(Graphics g) {
-		g.fillRect((int)position.getX(), (int)position.getY(), 15, 15);
+		g.setColor(Color.BLUE);
+		Vector2d axis1 = velocity.copy();
+		axis1.normalize(10);
+		Vector2d axis2 = axis1.ortho();
+		axis2.normalize(7);
+		int[] xPoints = {(int)(position.getX() + axis1.getX()),(int)(position.getX() + axis2.getX()),
+				(int)(position.getX() - axis1.getX()), (int)(position.getX() - axis2.getX())};
+		int[] yPoints = {(int)(position.getY() + axis1.getY()),(int)(position.getY() + axis2.getY()),
+				(int)(position.getY() - axis1.getY()), (int)(position.getY() - axis2.getY())};
+		g.fillPolygon(xPoints, yPoints, 4);
 	}
 
 	@Override
