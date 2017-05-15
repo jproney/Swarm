@@ -24,6 +24,7 @@ public class Arena extends JPanel implements Runnable{
 	
 	@Override
 	public void paintComponent(Graphics g){
+		super.paintComponent(g);
 		for(int i = 0; i < orgList.size(); i++){
 			orgList.get(i).update(orgList);
 			if(orgList.get(i).isDead()){
