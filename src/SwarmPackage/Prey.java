@@ -7,20 +7,20 @@ import java.util.ArrayList;
 public class Prey implements Sprite{
 
 	
-	private static int ARENA_WIDTH = 600;
-	private static int ARENA_HEIGHT = 600;
+	private static int ARENA_WIDTH = 800;
+	private static int ARENA_HEIGHT = 800;
 	private static double ATTRACTION = .00001;
 	private static double VEL_MATCHING = .001;
 	
 	private Vector2d position;
 	private Vector2d velocity;
 	private boolean dead = false;
-	private double velMag;
+	private double velMag = .6;
 	
 	public Prey(Vector2d pos){
 		position = pos;
-		velocity = new Vector2d(.2,.5);
-		velMag = velocity.getMagnitude();
+		velocity = new Vector2d(velMag,0);
+		velocity.rotate(Math.random()*Math.PI*2.0);
 	}
 	
 	public Prey(double x, double y){

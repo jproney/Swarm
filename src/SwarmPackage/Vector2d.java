@@ -11,6 +11,11 @@ public class Vector2d{
 		yComp = y;
 	}
 	
+	public void rotate(double ang){
+		xComp = xComp*Math.cos(ang) - yComp*Math.sin(ang);
+		yComp = xComp*Math.sin(ang) + yComp*Math.cos(ang);
+	}
+	
 	public double getX(){
 		return xComp;
 	}

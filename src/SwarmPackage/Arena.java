@@ -40,7 +40,7 @@ public class Arena extends JPanel implements Runnable{
 	@Override
 	public Dimension getPreferredSize() {
 	    // so that our GUI is big enough
-		return new Dimension(600, 600);
+		return new Dimension(800, 800);
 	}
 	
 
