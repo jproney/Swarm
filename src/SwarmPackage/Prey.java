@@ -32,21 +32,22 @@ public class Prey implements Sprite{
 		Vector2d com = new Vector2d(0,0);
 		Vector2d avgVel = new Vector2d(0,0);
 		Vector2d repuls = new Vector2d(0,0);
-		int numPrey = 0;
+		int numPreyInRadius = 0;
 		for(Sprite o : orgs){
 			if(o instanceof Prey && !o.equals(this)){
-				com.add(o.getPosition());
-				avgVel.add(o.getVelocity());
-				
 				Vector2d p1 = position.copy();
 				Vector2d p2 = o.getPosition().copy();
 				p2.scale(-1);
 				p1.add(p2);
+				if(p1.getMagnitude() <= 150){
+					com.add(o.getPosition());
+					avgVel.add(o.getVelocity());
+				    numPreyInRadius++;
+				}
 				if(p1.getMagnitude() <= 10){
 					p1.normalize(.01);
 					repuls.add(p1);
 				}
-				numPrey++;
 			}
 			else if(o instanceof Obstacle || o instanceof Predator){
 				Vector2d p1 = position.copy();
@@ -64,14 +65,14 @@ public class Prey implements Sprite{
 			}
 		}
 		
-		if(numPrey > 0){
-			com.scale(1.0/numPrey);
+		if(numPreyInRadius > 0){
+			com.scale(1.0/numPreyInRadius);
 			Vector2d p2 = position.copy();
 			p2.scale(-1.0);
 			com.add(p2);
 			com.scale(ATTRACTION);
 			
-			avgVel.scale(1.0/numPrey);
+			avgVel.scale(1.0/numPreyInRadius);
 			avgVel.scale(VEL_MATCHING);
 			
 			velocity.add(com);

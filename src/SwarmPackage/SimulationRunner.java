@@ -26,9 +26,9 @@ public class SimulationRunner {
 			}
 		});
 		panel.add(addPrey);
-		frame.setLayout(new GridLayout(1, 2));
+		//frame.setLayout(new GridLayout(1, 2));
 		frame.getContentPane().add(arena);
-		frame.getContentPane().add(panel);
+		//frame.getContentPane().add(panel);
 		frame.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent me) {
 				if (me.isShiftDown()) {
