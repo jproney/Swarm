@@ -29,7 +29,7 @@ public class SimulationRunner {
 		//frame.setLayout(new GridLayout(1, 2));
 		frame.getContentPane().add(arena);
 		//frame.getContentPane().add(panel);
-		frame.addMouseListener(new MouseAdapter() {
+		arena.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent me) {
 				if (me.isShiftDown()) {
 					arena.addOrganism(new Obstacle(me.getX(), me.getY()));

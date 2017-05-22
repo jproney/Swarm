@@ -61,15 +61,27 @@ public class Predator implements Sprite{
 
 		if((ARENA_WIDTH - position.getX()) < 150){
 			velocity.add(new Vector2d(-.001,0));
+			if((ARENA_WIDTH - position.getX()) < 0){
+				velocity.setX(-Math.abs(velocity.getX()));
+			}
 		}
 		if((position.getX()) < 150){
 			velocity.add(new Vector2d(.001, 0));
+		    if(position.getX() < 0){
+				velocity.setX(Math.abs(velocity.getX()));
+			}
 		}
 		if((ARENA_HEIGHT - position.getY()) < 150){
 			velocity.add(new Vector2d(0, -.001));
+		    if((ARENA_HEIGHT - position.getY()) < 0){
+				velocity.setY(-Math.abs(velocity.getY()));
+			}
 		}
 		if((position.getY()) < 150){
 			velocity.add(new Vector2d(0, .001));
+		    if(position.getY() < 0){
+				velocity.setY(Math.abs(velocity.getY()));
+			}
 		}
 		
 		velocity.capMag(velMag);

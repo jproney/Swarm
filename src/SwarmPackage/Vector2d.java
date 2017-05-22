@@ -24,6 +24,14 @@ public class Vector2d{
 		return yComp;
 	}
 	
+	public void setX(double x){
+		xComp = x;
+	}
+	
+	public void setY(double y){
+		yComp = y;
+	}
+	
 	public double getMagnitude(){
 		return Math.sqrt(Math.pow(xComp,2) + Math.pow(yComp,2));
 	}
