@@ -32,8 +32,14 @@ public class Predator implements Sprite{
 		int numPrey = 0;
 		for(Sprite o : orgs){
 			if(o instanceof Prey){
-				com.add(o.getPosition());
-				numPrey++;
+				Vector2d p1 = position.copy();
+				Vector2d p2 = o.getPosition().copy();
+				p2.scale(-1);
+				p1.add(p2);
+				if(p1.getMagnitude() <= 150){
+					com.add(o.getPosition());
+					numPrey++;
+				}
 			}
 			else if(o instanceof Obstacle){
 				Vector2d p1 = position.copy();
