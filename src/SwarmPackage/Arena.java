@@ -21,6 +21,12 @@ public class Arena extends JPanel implements Runnable{
 		orgList.add(o);
 	}
 	
+	public void breed(){
+		if(Math.random() >  (1 - .00007*orgList.size())){
+			addOrganism(new Prey((int)(Math.random()*800),(int)(Math.random()*800)));
+		}
+	}
+	
 	
 	@Override
 	public void paintComponent(Graphics g){
@@ -35,6 +41,7 @@ public class Arena extends JPanel implements Runnable{
 				orgList.get(i).draw(g);
 			}
 		}
+		breed();
 	}
 	
 	@Override
