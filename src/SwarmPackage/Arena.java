@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.JSlider;
+import java.util.concurrent.TimeUnit;
 
 public class Arena extends JPanel implements Runnable, ChangeListener{
 	
@@ -71,9 +72,16 @@ public class Arena extends JPanel implements Runnable, ChangeListener{
 	public void run() {
 		long startTime = System.nanoTime();
 		while(true){
-			if(System.nanoTime() - startTime > GAME_TICK){
+			long nanosDiff = System.nanoTime() - startTime;
+			if(nanosDiff > GAME_TICK){
 				repaint();
 				startTime = System.nanoTime();
+			} else {
+				try {
+					TimeUnit.NANOSECONDS.sleep(nanosDiff);
+				} catch (InterruptedException e) {
+					Thread.currentThread().interrupt();
+				}
 			}
 		}
 		

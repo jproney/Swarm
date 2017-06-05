@@ -33,7 +33,7 @@ public class Vector2d{
 	}
 	
 	public double getMagnitude(){
-		return Math.sqrt(Math.pow(xComp,2) + Math.pow(yComp,2));
+		return Math.sqrt(xComp * xComp + yComp * yComp);
 	}
 	
 	public void add(Vector2d vec){
@@ -84,4 +84,7 @@ public class Vector2d{
 		return new Vector2d(yComp, -xComp);
 	}
 		
+	public double getAngle(){
+		return Math.atan2(yComp , xComp);
+	}
 }
