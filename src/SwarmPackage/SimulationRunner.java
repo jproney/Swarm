@@ -1,6 +1,7 @@
 package SwarmPackage;
 
 import java.awt.GridLayout;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -10,24 +11,28 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import java.awt.BorderLayout;
 
 public class SimulationRunner {
 
 	static JFrame frame = new JFrame();
 	static JPanel panel = new JPanel();
-	static JButton addPrey = new JButton("Add Prey");
+	static JLabel addPrey = new JLabel("Click Anywhere to add Prey");
+	static JLabel addObst = new JLabel("Shift + Click to add Obstacles");
+	static JLabel addPred = new JLabel("Alt + Click to add Predators");
+	static JLabel changeBreed = new JLabel("<html>Move the slider to change<br> Prey spawning rate</html>", SwingConstants.CENTER);
 	static Arena arena = new Arena();
 	static Thread executor = new Thread(arena);
 
 	public static void main(String args[]) {
-		addPrey.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				arena.addOrganism(new Prey(100, 100));
-			}
-		});
 		panel.add(addPrey);
-		//frame.setLayout(new GridLayout(1, 2));
+		panel.add(addObst);
+		panel.add(addPred);
+		panel.add(changeBreed);
+		panel.setLayout(new GridLayout(4,1,5,0));
 		frame.getContentPane().add(arena);
+		frame.getContentPane().add(panel, BorderLayout.EAST);
 		//frame.getContentPane().add(panel);
 		arena.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent me) {
